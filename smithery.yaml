@@ -1,0 +1,24 @@
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    required:
+      - kudosityApiKey
+    properties:
+      kudosityApiKey:
+        type: string
+        title: Kudosity API Key
+        description: Your Kudosity API key (Settings → API Settings).
+      kudosityApiSecret:
+        type: string
+        title: Kudosity API Secret
+        description: Your Kudosity API secret. Optional — required only for contact-list and balance tools.
+  commandFunction: |
+    (config) => ({
+      command: "node",
+      args: ["dist/index.js"],
+      env: {
+        KUDOSITY_API_KEY: config.kudosityApiKey,
+        ...(config.kudosityApiSecret ? { KUDOSITY_API_SECRET: config.kudosityApiSecret } : {})
+      }
+    })

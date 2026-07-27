@@ -1,0 +1,53 @@
+{
+  "name": "@kudosity/mcp",
+  "version": "0.5.0",
+  "description": "Kudosity MCP server — send SMS, MMS and WhatsApp, manage contacts and webhooks, and research the Kudosity API from AI agents",
+  "type": "module",
+  "bin": {
+    "kudosity-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "mcpName": "com.kudosity/mcp",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsc && node dist/index.js",
+    "test": "npm run build && node test/e2e.mjs",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "sms",
+    "mms",
+    "whatsapp",
+    "messaging",
+    "rcs",
+    "kudosity",
+    "ai-agents",
+    "notifications"
+  ],
+  "homepage": "https://developers.kudosity.com/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kudosity/mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kudosity/mcp/issues"
+  },
+  "author": "Kudosity",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.13.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.6.0"
+  }
+}

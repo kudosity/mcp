@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.env
+*.log
+.DS_Store
+
+# Local live-test helpers — read personal API keys from an absolute path, never publish
+test/live-send.mjs
+test/get.mjs
+test/infra-test.mjs
+test/lists-test.mjs
+test/tier1-discovery-test.mjs
