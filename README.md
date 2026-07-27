@@ -69,7 +69,7 @@ Runs via `npx` — no clone required.
   "mcpServers": {
     "kudosity": {
       "command": "npx",
-      "args": ["-y", "@kudosity/mcp"],
+      "args": ["-y", "kudosity-mcp"],
       "env": {
         "KUDOSITY_API_KEY": "your_api_key",
         "KUDOSITY_API_SECRET": "your_api_secret"
@@ -88,7 +88,7 @@ Runs via `npx` — no clone required.
   "mcpServers": {
     "kudosity": {
       "command": "npx",
-      "args": ["-y", "@kudosity/mcp"],
+      "args": ["-y", "kudosity-mcp"],
       "env": { "KUDOSITY_API_KEY": "your_api_key", "KUDOSITY_API_SECRET": "your_api_secret" }
     }
   }
@@ -102,7 +102,7 @@ Runs via `npx` — no clone required.
   "servers": {
     "kudosity": {
       "command": "npx",
-      "args": ["-y", "@kudosity/mcp"],
+      "args": ["-y", "kudosity-mcp"],
       "env": { "KUDOSITY_API_KEY": "your_api_key", "KUDOSITY_API_SECRET": "your_api_secret" }
     }
   }

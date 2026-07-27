@@ -1,5 +1,5 @@
 {
-  "name": "@kudosity/mcp",
+  "name": "kudosity-mcp",
   "version": "0.5.0",
   "description": "Kudosity MCP server — send SMS, MMS and WhatsApp, manage contacts and webhooks, and research the Kudosity API from AI agents",
   "type": "module",
