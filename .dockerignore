@@ -1,0 +1,10 @@
+node_modules
+dist
+build
+dist-mcpb
+test
+.git
+.github
+*.md
+*.mcpb
+.env*

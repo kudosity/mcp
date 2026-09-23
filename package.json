@@ -1,10 +1,11 @@
 {
   "name": "kudosity-mcp",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Kudosity MCP server — send SMS, MMS and WhatsApp, manage contacts and webhooks, and research the Kudosity API from AI agents",
   "type": "module",
   "bin": {
-    "kudosity-mcp": "dist/index.js"
+    "kudosity-mcp": "dist/index.js",
+    "kudosity-mcp-http": "dist/http.js"
   },
   "files": [
     "dist"
@@ -13,9 +14,13 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
+    "start:http": "node dist/http.js",
     "dev": "tsc && node dist/index.js",
-    "test": "npm run build && node test/e2e.mjs",
-    "prepare": "npm run build"
+    "test": "npm run build && node test/e2e.mjs && node test/http-test.mjs && node test/oauth-test.mjs",
+    "test:http": "node test/http-test.mjs",
+    "build:mcpb": "bash scripts/build-mcpb.sh",
+    "prepare": "npm run build",
+    "test:oauth": "node test/oauth-test.mjs"
   },
   "keywords": [
     "mcp",
@@ -48,6 +53,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
-    "typescript": "^5.6.0"
+    "typescript": "^5.6.0",
+    "@anthropic-ai/mcpb": "^2.1.2"
   }
 }

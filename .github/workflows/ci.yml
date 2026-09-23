@@ -16,7 +16,20 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
-      - name: Mock integration tests
+      - name: Mock integration tests (stdio)
         run: node test/e2e.mjs
+      - name: Mock integration tests (streamable HTTP)
+        run: node test/http-test.mjs
+      - name: Mock integration tests (OAuth / lazy auth)
+        run: node test/oauth-test.mjs
       - name: Live spec-discovery test
         run: node test/discovery-test.mjs
+      - name: Validate desktop-extension manifest
+        run: npx mcpb validate manifest.json
+      - name: Build desktop extension (.mcpb)
+        run: npm run build:mcpb
+      - uses: actions/upload-artifact@v4
+        with:
+          name: kudosity-mcp-mcpb
+          path: dist-mcpb/*.mcpb
+          if-no-files-found: error

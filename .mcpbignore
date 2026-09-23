@@ -1,0 +1,16 @@
+# Only dist/, node_modules/, manifest.json, package.json, icon.png, LICENSE and README.md belong in the bundle.
+# scripts/build-mcpb.sh stages exactly those; this file covers a direct `mcpb pack .`.
+src
+test
+scripts
+.github
+build
+dist-mcpb
+*.mcpb
+tsconfig.json
+server.json
+smithery.yaml
+glama.json
+Dockerfile
+.dockerignore
+CHANGELOG.md
