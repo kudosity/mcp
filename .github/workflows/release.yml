@@ -1,0 +1,26 @@
+name: Release assets
+
+# When a GitHub Release is published, build the Claude Desktop extension and
+# attach it to the release so users can download kudosity-mcp-<version>.mcpb.
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  mcpb:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run build:mcpb
+      - name: Attach .mcpb to the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release upload "${{ github.event.release.tag_name }}" dist-mcpb/*.mcpb --clobber

@@ -1,0 +1,79 @@
+{
+  "manifest_version": "0.3",
+  "name": "kudosity-mcp",
+  "display_name": "Kudosity",
+  "version": "0.6.0",
+  "description": "Send SMS, MMS and WhatsApp, manage contacts and webhooks, and explore the Kudosity API.",
+  "long_description": "Gives Claude native tools for the Kudosity messaging platform: send SMS, MMS and WhatsApp messages, check delivery status and inbound replies, manage contact lists and webhooks, check your balance, and search the live Kudosity API reference.\n\nYou need a Kudosity account and API key (Settings → API Settings in the Kudosity platform). The API secret is optional and only needed for the contact-list and balance tools.\n\nSending a message is billable and irreversible, so Claude always asks before sending.",
+  "author": {
+    "name": "Kudosity",
+    "url": "https://kudosity.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kudosity/mcp"
+  },
+  "homepage": "https://developers.kudosity.com/docs/mcp",
+  "documentation": "https://developers.kudosity.com/docs/mcp",
+  "support": "https://help.kudosity.com",
+  "icon": "icon.png",
+  "license": "MIT",
+  "keywords": ["sms", "mms", "whatsapp", "messaging", "notifications", "kudosity", "contacts", "webhooks"],
+  "privacy_policies": ["https://kudosity.com/legal/privacy-policy"],
+  "server": {
+    "type": "node",
+    "entry_point": "dist/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/dist/index.js"],
+      "env": {
+        "KUDOSITY_API_KEY": "${user_config.api_key}",
+        "KUDOSITY_API_SECRET": "${user_config.api_secret}"
+      }
+    }
+  },
+  "tools": [
+    { "name": "send_sms", "description": "Send an SMS to a recipient" },
+    { "name": "send_mms", "description": "Send an MMS with a media attachment" },
+    { "name": "send_whatsapp", "description": "Send a WhatsApp message (free-form text or approved template)" },
+    { "name": "get_message", "description": "Get a sent message and its status by channel and ID" },
+    { "name": "list_messages", "description": "List sent or received messages with delivery status" },
+    { "name": "create_webhook", "description": "Register an HTTPS webhook for delivery status, inbound messages, link hits, opt-outs" },
+    { "name": "list_webhooks", "description": "List configured webhooks" },
+    { "name": "delete_webhook", "description": "Delete a webhook by ID" },
+    { "name": "get_balance", "description": "Get your account balance" },
+    { "name": "create_list", "description": "Create a contact list" },
+    { "name": "get_lists", "description": "List all contact lists" },
+    { "name": "get_list", "description": "Get a contact list and optionally its members" },
+    { "name": "add_contact_to_list", "description": "Add a contact to a list" },
+    { "name": "remove_contact_from_list", "description": "Remove a contact from a list" },
+    { "name": "delete_list", "description": "Delete a contact list" },
+    { "name": "list_specs", "description": "List the Kudosity API specifications" },
+    { "name": "list_endpoints", "description": "List all endpoints for an API spec" },
+    { "name": "search_endpoints", "description": "Search the Kudosity API reference by keyword" },
+    { "name": "get_endpoint", "description": "Get full detail for one API endpoint" }
+  ],
+  "user_config": {
+    "api_key": {
+      "type": "string",
+      "title": "Kudosity API key",
+      "description": "From the Kudosity platform: Settings → API Settings. Used for messaging, webhooks and reporting.",
+      "sensitive": true,
+      "required": true
+    },
+    "api_secret": {
+      "type": "string",
+      "title": "Kudosity API secret (optional)",
+      "description": "Same page as the API key. Only needed for the contact-list and balance tools; leave blank otherwise.",
+      "sensitive": true,
+      "required": false
+    }
+  },
+  "compatibility": {
+    "claude_desktop": ">=0.10.0",
+    "platforms": ["darwin", "win32", "linux"],
+    "runtimes": {
+      "node": ">=18.0.0"
+    }
+  }
+}
